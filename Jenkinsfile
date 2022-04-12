@@ -16,7 +16,6 @@ pipeline{
         }
         stage("Connect and Deploy") {
                 steps {
-                    sshCommand remote: remote, command: "ls -l"
                     sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
                 } 
             }
