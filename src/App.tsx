@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Version 1.0</p>
+        <p>Version 1.2</p>
         <Counter />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
