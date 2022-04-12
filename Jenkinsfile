@@ -22,7 +22,8 @@ pipeline{
                         remote.identityFile = identity
                     }
                     sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
-                    sshPut remote: remote, from: 'build/', filterRegex: /.*/, into: '/tmp/test'
+                    sh 'mv build/ test'
+                    sshPut remote: remote, from: 'test/', into: '/tmp/'
                     }
                 } 
         }
