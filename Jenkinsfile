@@ -14,46 +14,13 @@ pipeline{
              steps {
                 sh 'npm install'
                 sh "npm run build"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }            
+            }          
         }
         stage("Connect and Deploy") {
                 steps {
                     sshCommand remote: remote, command: "ls -lrt"
                     sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
-                }
-                post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }     
+                } 
             }
-    }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
-        }
     }
 }
