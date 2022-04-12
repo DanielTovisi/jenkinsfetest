@@ -6,7 +6,7 @@ def remote = [:]
             remote.allowAnyHosts = true
 pipeline{
     agent{
-        label "node"
+        label "any"
     }
     tools {nodejs "17.9.0"}
     stages{
