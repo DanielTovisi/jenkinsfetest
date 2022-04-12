@@ -21,8 +21,7 @@ pipeline{
                         remote.user = user
                         remote.identityFile = identity
                     }
-                    sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
-                    sh 'mv build/ react'
+                    sh 'mv build react'
                     sshPut remote: remote, from: 'react/', into: '/usr/share/nginx'
                     }
                 } 
