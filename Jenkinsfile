@@ -16,7 +16,7 @@ pipeline{
         
         stage("Connect and Deploy") {             
                 steps {
-                    withCredentials([sshUserPrivateKey(credentialsId: 'test-server-access', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'user')]) {
+                    withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'test-server-access', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'user')]) {
                     remote.user = $user
                     remote.identityFile = $identity
                     sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
