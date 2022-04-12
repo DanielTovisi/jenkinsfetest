@@ -18,8 +18,8 @@ pipeline{
                 steps {
                     withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'test-server-access', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'user')]) {
                     script{
-                        remote.user = $user
-                        remote.identityFile = $identity
+                        remote.user = user
+                        remote.identityFile = identity
                     }
                     sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
                     }
