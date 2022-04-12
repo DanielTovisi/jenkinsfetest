@@ -2,8 +2,6 @@ node {
      agent any
      tools {nodejs "17.9.0"}
      
-            
-     stages {
         stage("Build") {
             steps {
                 sh 'npm install'
@@ -22,5 +20,4 @@ node {
                     sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
                 }
             }
-    }
 }
