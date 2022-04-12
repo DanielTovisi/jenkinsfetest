@@ -2,13 +2,13 @@ def remote = [:]
             remote.name = 'test'
             remote.host = '35.156.239.114'
             remote.allowAnyHosts = true
-withCredentials([sshUserPrivateKey(credentialsId: '	test-server-access', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'user')]) {
-        remote.user = user
-        remote.identityFile = identity
-}
 pipeline{
     agent any
     tools {nodejs "17.9.0"}
+    withCredentials([sshUserPrivateKey(credentialsId: '	test-server-access', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'user')]) {
+        remote.user = user
+        remote.identityFile = identity
+    }
     stages{
         stage("Build"){
              steps {
