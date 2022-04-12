@@ -21,6 +21,7 @@ pipeline{
                         remote.user = user
                         remote.identityFile = identity
                     }
+                    sh 'rm -rf react'
                     sh 'mv build react'
                     sshPut remote: remote, from: 'react/', into: '/usr/share/nginx'
                     }
